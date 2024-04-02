@@ -3,7 +3,13 @@
     "version": ">= 7.6.2"
   },
   "build": {
-    "preview": {},
+    "preview": {
+      "android": {
+        "buildType": "apk",
+        "autoIncrement": "versionCode"
+      },
+      "distribution": "internal"
+    },
     "production": {
       "autoIncrement": true
     }
