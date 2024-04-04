@@ -2,7 +2,7 @@
   "expo": {
     "name": "iweather",
     "slug": "iweather",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,14 +15,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "br.com.gustawell.iweather"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.gustawell.iweather"
+      "package": "com.gustawell.iweather",
+      "versionCode": 7
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -34,6 +36,10 @@
       "eas": {
         "projectId": "4af05878-bfa3-4528-86fe-b1f12b5ff5ae"
       }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/4af05878-bfa3-4528-86fe-b1f12b5ff5ae"
     }
   }
 }
