@@ -21,4 +21,4 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build on EAS
-        run: eas update --branch preview --auto
+        run: eas update --branch preview --auto --non-interactive
