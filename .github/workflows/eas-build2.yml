@@ -8,8 +8,8 @@ on:
 jobs:
   build:
     name: Install and build
-    runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
     steps:
       - name: Check for EXPO_TOKEN
         run: |
