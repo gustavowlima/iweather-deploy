@@ -1,19 +1,21 @@
 name: EAS Build
 on:
   pull_request_target:
-    types: [closed]
-    branches:
-      - main
+    types:
+      - closed
 
 jobs:
-  if_merged:
+  check_merge:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    name: Install and build
+    steps:
+      - name: Echo merged status
+        run: echo "The PR was merged. Proceeding to build."
+
+  build:
+    needs: check_merge
     runs-on: ubuntu-latest
     steps:
-    - run: | 
-        echo The
       - name: Check for EXPO_TOKEN
         run: |
           if [ -z "${{ secrets.EAS_EXPO_TOKEN }}" ]; then
@@ -35,7 +37,7 @@ jobs:
         with:
           expo-version: latest
           eas-version: latest
-          token: ${{ secrets.EAS_EXPO_TOKEN}}
+          token: ${{ secrets.EAS_EXPO_TOKEN }}
 
       - name: Find yarn cache
         id: yarn-cache-path
@@ -44,12 +46,3 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v2
         with:
-          path: ${{ steps.yarn-cache-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: yarn install --immutable
-
-      - name: Publish update
-        run: eas update --branch preview --auto --non-interactive
