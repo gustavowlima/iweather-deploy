@@ -1,17 +1,19 @@
 name: EAS Build
 on:
-  pull_request:
+  pull_request_target:
     types: [closed]
     branches:
       - main
 
 jobs:
-  if_pr_merged:
+  if_merged:
     if: github.event.pull_request.merged == true
-  build:
+    runs-on: ubuntu-latest
     name: Install and build
     runs-on: ubuntu-latest
     steps:
+    - run: | 
+        echo The
       - name: Check for EXPO_TOKEN
         run: |
           if [ -z "${{ secrets.EAS_EXPO_TOKEN }}" ]; then
